@@ -22,7 +22,7 @@
   "minimal_roi": {
     "0": 100
   },
-  "stoploss": -0.2,
+  "stoploss": -0.3,
   "entry_pricing": {
     "price_side": "other",
     "use_order_book": false,

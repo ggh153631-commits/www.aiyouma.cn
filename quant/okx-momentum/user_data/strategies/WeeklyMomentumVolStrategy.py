@@ -97,7 +97,7 @@ class WeeklyMomentumVolStrategy(IStrategy):
 
     # Hold the week. Exit on the weekly rebalance, or on the crash stop below.
     minimal_roi = {"0": 100}
-    stoploss = -0.20
+    stoploss = -0.30
     trailing_stop = False
     use_custom_stoploss = False
     use_exit_signal = True
