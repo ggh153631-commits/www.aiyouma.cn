@@ -1,0 +1,162 @@
+{
+  "generated_at": "2026-10-21T07:07:53.444010+00:00",
+  "exchange": "okx",
+  "quote": "USDT",
+  "min_quote_volume_usdt": 2000000,
+  "min_listed_days": 60,
+  "inst_category": "1",
+  "selection": "top quote volume among OKX crypto spot (instCategory 1); tokenized stocks, metal tokens, stables, and leveraged tokens removed; listed at least 60 days",
+  "bias": "Snapshot of current liquidity applied to the whole backtest. Not a point-in-time historical universe.",
+  "pairs": [
+    {
+      "pair": "BTC/USDT",
+      "base": "BTC",
+      "quote_volume_usdt": 413111670.37,
+      "listed_at": "2021-01-29"
+    },
+    {
+      "pair": "ETH/USDT",
+      "base": "ETH",
+      "quote_volume_usdt": 326114920.77,
+      "listed_at": "2021-01-29"
+    },
+    {
+      "pair": "ZEC/USDT",
+      "base": "ZEC",
+      "quote_volume_usdt": 107393417.4,
+      "listed_at": "2025-11-24"
+    },
+    {
+      "pair": "SOL/USDT",
+      "base": "SOL",
+      "quote_volume_usdt": 58073929.1,
+      "listed_at": "2021-01-29"
+    },
+    {
+      "pair": "NEAR/USDT",
+      "base": "NEAR",
+      "quote_volume_usdt": 38081975.58,
+      "listed_at": "2021-01-29"
+    },
+    {
+      "pair": "WLD/USDT",
+      "base": "WLD",
+      "quote_volume_usdt": 29127844.86,
+      "listed_at": "2023-07-24"
+    },
+    {
+      "pair": "PEPE/USDT",
+      "base": "PEPE",
+      "quote_volume_usdt": 27346008.54,
+      "listed_at": "2023-05-01"
+    },
+    {
+      "pair": "DOGE/USDT",
+      "base": "DOGE",
+      "quote_volume_usdt": 24115757.53,
+      "listed_at": "2021-01-29"
+    },
+    {
+      "pair": "XRP/USDT",
+      "base": "XRP",
+      "quote_volume_usdt": 20487941.82,
+      "listed_at": "2021-01-29"
+    },
+    {
+      "pair": "HYPE/USDT",
+      "base": "HYPE",
+      "quote_volume_usdt": 18614850.45,
+      "listed_at": "2025-11-04"
+    },
+    {
+      "pair": "UNI/USDT",
+      "base": "UNI",
+      "quote_volume_usdt": 17740084.16,
+      "listed_at": "2021-01-29"
+    },
+    {
+      "pair": "SUI/USDT",
+      "base": "SUI",
+      "quote_volume_usdt": 13614348.28,
+      "listed_at": "2023-05-03"
+    },
+    {
+      "pair": "ARB/USDT",
+      "base": "ARB",
+      "quote_volume_usdt": 10833285.31,
+      "listed_at": "2023-03-23"
+    },
+    {
+      "pair": "OKB/USDT",
+      "base": "OKB",
+      "quote_volume_usdt": 9976769.75,
+      "listed_at": "2021-01-29"
+    },
+    {
+      "pair": "LIT/USDT",
+      "base": "LIT",
+      "quote_volume_usdt": 9482343.62,
+      "listed_at": "2026-01-15"
+    },
+    {
+      "pair": "DOOD/USDT",
+      "base": "DOOD",
+      "quote_volume_usdt": 8880675.88,
+      "listed_at": "2025-10-17"
+    },
+    {
+      "pair": "PUMP/USDT",
+      "base": "PUMP",
+      "quote_volume_usdt": 8847211.54,
+      "listed_at": "2025-07-18"
+    },
+    {
+      "pair": "STRK/USDT",
+      "base": "STRK",
+      "quote_volume_usdt": 7948916.27,
+      "listed_at": "2024-02-20"
+    },
+    {
+      "pair": "FIL/USDT",
+      "base": "FIL",
+      "quote_volume_usdt": 7530156.33,
+      "listed_at": "2021-01-29"
+    },
+    {
+      "pair": "TRUMP/USDT",
+      "base": "TRUMP",
+      "quote_volume_usdt": 7060797.18,
+      "listed_at": "2025-01-19"
+    },
+    {
+      "pair": "LTC/USDT",
+      "base": "LTC",
+      "quote_volume_usdt": 6074815.17,
+      "listed_at": "2021-01-29"
+    },
+    {
+      "pair": "ENA/USDT",
+      "base": "ENA",
+      "quote_volume_usdt": 5753199.52,
+      "listed_at": "2025-09-17"
+    },
+    {
+      "pair": "ADA/USDT",
+      "base": "ADA",
+      "quote_volume_usdt": 5172483.27,
+      "listed_at": "2021-01-29"
+    },
+    {
+      "pair": "BNB/USDT",
+      "base": "BNB",
+      "quote_volume_usdt": 4886999.83,
+      "listed_at": "2022-12-20"
+    },
+    {
+      "pair": "BCH/USDT",
+      "base": "BCH",
+      "quote_volume_usdt": 4868685.97,
+      "listed_at": "2021-01-29"
+    }
+  ]
+}

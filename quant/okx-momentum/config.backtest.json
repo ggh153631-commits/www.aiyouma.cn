@@ -1,0 +1,126 @@
+{
+  "max_open_trades": 5,
+  "stake_currency": "USDT",
+  "stake_amount": "unlimited",
+  "tradable_balance_ratio": 0.99,
+  "last_stake_amount_min_ratio": 0.5,
+  "amend_last_stake_amount": false,
+  "fiat_display_currency": "USD",
+  "dry_run": true,
+  "dry_run_wallet": 10000,
+  "fee": 0.001,
+  "cancel_open_orders_on_exit": false,
+  "timeframe": "1d",
+  "trading_mode": "spot",
+  "margin_mode": "",
+  "unfilledtimeout": {
+    "entry": 10,
+    "exit": 10,
+    "exit_timeout_count": 0,
+    "unit": "minutes"
+  },
+  "minimal_roi": {
+    "0": 100
+  },
+  "stoploss": -0.2,
+  "entry_pricing": {
+    "price_side": "other",
+    "use_order_book": false,
+    "order_book_top": 1
+  },
+  "exit_pricing": {
+    "price_side": "other",
+    "use_order_book": false,
+    "order_book_top": 1
+  },
+  "order_types": {
+    "entry": "market",
+    "exit": "market",
+    "emergency_exit": "market",
+    "force_exit": "market",
+    "force_entry": "market",
+    "stoploss": "market",
+    "stoploss_on_exchange": false
+  },
+  "order_time_in_force": {
+    "entry": "GTC",
+    "exit": "GTC"
+  },
+  "pairlists": [
+    {
+      "method": "StaticPairList"
+    }
+  ],
+  "exchange": {
+    "name": "okx",
+    "key": "",
+    "secret": "",
+    "password": "",
+    "ccxt_config": {
+      "enableRateLimit": true,
+      "options": {
+        "defaultType": "spot"
+      }
+    },
+    "ccxt_async_config": {
+      "enableRateLimit": true,
+      "options": {
+        "defaultType": "spot"
+      }
+    },
+    "pair_whitelist": [
+      "BTC/USDT",
+      "ETH/USDT",
+      "ZEC/USDT",
+      "SOL/USDT",
+      "NEAR/USDT",
+      "WLD/USDT",
+      "PEPE/USDT",
+      "DOGE/USDT",
+      "XRP/USDT",
+      "HYPE/USDT",
+      "UNI/USDT",
+      "SUI/USDT",
+      "ARB/USDT",
+      "OKB/USDT",
+      "LIT/USDT",
+      "DOOD/USDT",
+      "PUMP/USDT",
+      "STRK/USDT",
+      "FIL/USDT",
+      "TRUMP/USDT",
+      "LTC/USDT",
+      "ENA/USDT",
+      "ADA/USDT",
+      "BNB/USDT",
+      "BCH/USDT"
+    ],
+    "pair_blacklist": [
+      "(USDC|USDE|USDD|DAI|TUSD|FDUSD|USD1|PYUSD|USDG|USDP|GUSD|USTC|USDS|USD0|RLUSD)/USDT",
+      ".*(UP|DOWN|BULL|BEAR|[0-9]+L|[0-9]+S)/USDT"
+    ]
+  },
+  "telegram": {
+    "enabled": false,
+    "token": "",
+    "chat_id": ""
+  },
+  "api_server": {
+    "enabled": false,
+    "listen_ip_address": "127.0.0.1",
+    "listen_port": 8080,
+    "verbosity": "error",
+    "jwt_secret_key": "dry-run-only-disabled-api-not-a-secret",
+    "username": "",
+    "password": ""
+  },
+  "bot_name": "okx-weekly-momentum",
+  "initial_state": "running",
+  "force_entry_enable": false,
+  "internals": {
+    "process_throttle_secs": 5
+  },
+  "dataformat_ohlcv": "feather",
+  "dataformat_trades": "feather",
+  "strategy": "WeeklyMomentumVolStrategy"
+}
