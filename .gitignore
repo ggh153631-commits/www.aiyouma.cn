@@ -1,0 +1,14 @@
+# Reinstallable trading runtime. Strategy code and configs stay tracked.
+quant/okx-momentum/.venv/
+quant/okx-momentum/user_data/data/
+quant/okx-momentum/user_data/logs/
+quant/okx-momentum/user_data/backtest_results/
+quant/okx-momentum/user_data/hyperopt_results/
+quant/okx-momentum/**/__pycache__/
+quant/okx-momentum/**/*.pyc
+quant/okx-momentum/**/*.sqlite
+quant/okx-momentum/**/*.log
+quant/okx-momentum/**/*.feather
+quant/okx-momentum/**/*.parquet
+tradesv3.sqlite
+tradesv3.dryrun.sqlite
