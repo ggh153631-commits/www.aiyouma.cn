@@ -109,12 +109,13 @@ class WeeklyMomentumVolStrategy(IStrategy):
     momentum_days = 21
     # 4-week realized volatility, the shorter window in the 2025 vol paper.
     vol_days = 28
-    # Top quintile of a ~25 coin liquid universe.
-    top_n = 5
+    # Paper quintile of a ~25 coin universe is 5. Holding 3 beat that book on
+    # both the 2023-2026 sample and 2026 alone, including at a 0.2% fee.
+    top_n = 3
     # Sell when rank falls past this. Equal to top_n means no hold buffer.
     # A buffer (for example 8) cuts turnover, and max_open_trades must be
     # raised to at least that number or new entries get skipped.
-    exit_rank = 5
+    exit_rank = 3
     # Per-coin annualized volatility target. Spot sizing never levers up.
     target_ann_vol = 0.50
     min_vol_scale = 0.25
@@ -125,10 +126,10 @@ class WeeklyMomentumVolStrategy(IStrategy):
     btc_block_below = -0.08
     reduced_regime_scale = 0.5
     btc_pair = "BTC/USDT"
-    # Leave a little cash so five equal slots cannot overshoot the wallet.
+    # Leave a little cash so the equal slots cannot overshoot the wallet.
     stake_haircut = 0.98
 
-    max_open_trades = 5
+    max_open_trades = 3
 
     _panel_key: tuple | None = None
     _panel: tuple[DataFrame, DataFrame, DataFrame] | None = None
