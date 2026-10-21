@@ -56,6 +56,37 @@ def weekly_rebalance_mask(dates: Series) -> Series:
     return dates.dt.dayofweek.eq(6)
 
 
+def _column_values(frame: DataFrame, column: str) -> np.ndarray:
+    """Positional values. Never assign the Series itself: its date index will not match."""
+    if column not in frame.columns:
+        return np.full(len(frame), np.nan)
+    return frame[column].to_numpy()
+
+
+def attach_cross_section(
+    dataframe: DataFrame,
+    pair: str,
+    momentum: DataFrame,
+    volatility: DataFrame,
+    rank: DataFrame,
+    btc_pair: str,
+) -> DataFrame:
+    """Left-join cross-sectional columns onto this pair's candles, matched on candle time."""
+    dataframe = dataframe.drop(columns=["mom", "vol", "rank", "btc_mom"], errors="ignore").copy()
+    extra = pd.DataFrame(
+        {
+            "_k": pd.to_datetime(momentum.index, utc=True),
+            "mom": _column_values(momentum, pair),
+            "vol": _column_values(volatility, pair),
+            "rank": _column_values(rank, pair),
+            "btc_mom": _column_values(momentum, btc_pair),
+        }
+    )
+    dataframe["_k"] = pd.to_datetime(dataframe["date"], utc=True)
+    merged = dataframe.merge(extra, on="_k", how="left")
+    return merged.drop(columns=["_k"])
+
+
 class WeeklyMomentumVolStrategy(IStrategy):
     INTERFACE_VERSION = 3
 
@@ -114,7 +145,9 @@ class WeeklyMomentumVolStrategy(IStrategy):
 
         pair = metadata["pair"]
         momentum, volatility, rank = self._panel_frames()
-        dataframe = self._attach_pair_columns(dataframe, pair, momentum, volatility, rank)
+        dataframe = attach_cross_section(
+            dataframe, pair, momentum, volatility, rank, self.btc_pair
+        )
         dataframe["rebalance"] = weekly_rebalance_mask(dataframe["date"])
         dataframe.replace([np.inf, -np.inf], np.nan, inplace=True)
         return dataframe
@@ -242,31 +275,6 @@ class WeeklyMomentumVolStrategy(IStrategy):
         if self.btc_pair not in pairs:
             pairs.append(self.btc_pair)
         return pairs
-
-    def _attach_pair_columns(
-        self,
-        dataframe: DataFrame,
-        pair: str,
-        momentum: DataFrame,
-        volatility: DataFrame,
-        rank: DataFrame,
-    ) -> DataFrame:
-        extra = pd.DataFrame({"date": momentum.index})
-        extra["mom"] = self._column_or_nan(momentum, pair)
-        extra["vol"] = self._column_or_nan(volatility, pair)
-        extra["rank"] = self._column_or_nan(rank, pair)
-        extra["btc_mom"] = self._column_or_nan(momentum, self.btc_pair)
-        # date can come back as object after DataFrame construction
-        extra["date"] = pd.to_datetime(extra["date"], utc=True)
-        dataframe = dataframe.drop(columns=["mom", "vol", "rank", "btc_mom"], errors="ignore")
-        dataframe["date"] = pd.to_datetime(dataframe["date"], utc=True)
-        return dataframe.merge(extra, on="date", how="left")
-
-    @staticmethod
-    def _column_or_nan(frame: DataFrame, column: str) -> Series:
-        if column not in frame.columns:
-            return pd.Series(np.nan, index=frame.index)
-        return frame[column]
 
     def _latest_closed_row(self, pair: str) -> pd.Series | None:
         if self.dp is None:

@@ -38,6 +38,23 @@ def test_rebalance_is_sunday_only() -> None:
     assert dates[mask].dt.day_name().tolist() == ["Sunday"]
 
 
+def test_attach_keeps_values_when_the_panel_index_is_dates() -> None:
+    dates = pd.date_range("2024-01-01", periods=4, freq="D", tz="UTC")
+    closes = pd.DataFrame({"AAA/USDT": [1, 2, 3, 4], "BTC/USDT": [10, 10, 10, 12]}, index=dates)
+    momentum, volatility, rank = strategy.momentum_vol_rank(closes, momentum_days=1, vol_days=2)
+    candles = pd.DataFrame(
+        {
+            "date": dates.astype("datetime64[ms, UTC]"),
+            "close": [1, 2, 3, 4],
+        }
+    )
+    attached = strategy.attach_cross_section(
+        candles, "AAA/USDT", momentum, volatility, rank, "BTC/USDT"
+    )
+    assert attached["mom"].notna().sum() == 3
+    assert attached["date"].dtype == candles["date"].dtype
+
+
 def test_zero_price_does_not_produce_infinity() -> None:
     dates = pd.date_range("2024-01-01", periods=25, freq="D", tz="UTC")
     closes = pd.DataFrame({"BAD/USDT": 0.0, "OK/USDT": 10.0}, index=dates)
